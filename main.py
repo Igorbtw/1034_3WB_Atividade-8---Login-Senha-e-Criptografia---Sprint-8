@@ -1,24 +1,23 @@
 def valida_email(email):
     return email[-8:] == "@puc.com"
 
-print(valida_email("igorrodrigues301107@puc.com"))
 
 def possuiMaiuscula(palavra):
     for letra in palavra:
         if 'A' <= letra <= 'Z': #letra.isupper
-            return True
+            return True #Retorna True se a alguma letra na palavra estiver no range de "A" ate "Z"
         return False
 
 def possuiminuscala(palavra):
     for letra in palavra:
         if 'a' <= letra <= 'z': #letra.isupper
-            return True
+            return True  #Retorna True se a alguma letra na palavra estiver no range de "a" ate "z"
         return False
 
 def possuinumero(palavra):
     for caracter in palavra:
         if '0' <= caracter <= '9':
-            return True
+            return True  #Retorna True se a alguma letra na palavra estiver no range de "0" ate "9"
         return False
 
 
@@ -44,27 +43,35 @@ print(valida_senha("Def1234"))
 # 4 passo obter o resto da divisão do resultado de 3 por 26(28 % 28 = 2)
 # 5 passo somar o resto a 65 e converter valor de volta para letra(2+65 s 67 s letra)
 
-def criptografo_senha(senha):
+def criptografa_senha(senha):
+    senha_cripto = ""
     for char in senha:
         if char.isdigit():
-            # Copiar lògica do maisculo, trocando ref para '0'
-            pass
-        elif 'A' <= char <= 'Z':
-            ref = ord ('A') #65
-            ascii_char = ord(char) #Etapa 1
-            pos_alpha = ascii_char - ref #etapa2
-            pos_cesar = pos_alpha + 3 #Etapa3
-            pos_cesar = pos_cesar %26 #Etapa4
-            letra_cesar = chr(ref + pos_cesar) #5etapa
+            ref = ord('0')
+            ascii_char = ord(char) #etapa 1
+            pos_alpha = ascii_char - ref #etapa 2
+            pos_cesar = pos_alpha + 3 #etapa 3
+            pos_cesar = pos_cesar % 10 #etapa 4
+            letra_cesar = chr(ref + pos_cesar) #etapa 5
             senha_cripto += letra_cesar
-
-
-        elif 'a' <= char <= 'z' :
-             # Copiar lògica do maisculo, trocando ref para 'a'
-            pass
+        elif 'A' <= char <= 'Z':
+            ref = ord('A')
+            ascii_char = ord(char) #etapa 1
+            pos_alpha = ascii_char - ref #etapa 2
+            pos_cesar = pos_alpha + 3 #etapa 3
+            pos_cesar = pos_cesar % 26 #etapa 4
+            letra_cesar = chr(ref + pos_cesar) #etapa 5
+            senha_cripto += letra_cesar
+        elif 'a' <= char <= 'z':
+            ref = ord('a')
+            ascii_char = ord(char) #etapa 1
+            pos_alpha = ascii_char - ref #etapa 2
+            pos_cesar = pos_alpha + 3 #etapa 3
+            pos_cesar = pos_cesar % 26 #etapa 4
+            letra_cesar = chr(ref + pos_cesar) #etapa 5
+            senha_cripto += letra_cesar
         else:
             senha_cripto += char
-            return senha_cripto
-        
-print(criptografo_senha("ZARALHAR@"))
+    return senha_cripto
+
             
